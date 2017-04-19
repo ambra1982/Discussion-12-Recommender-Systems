@@ -1,0 +1,63 @@
+---
+title: "Discussion 12: Recommender Systems"
+author: "Ambra"
+date: "18 aprile 2017"
+output: 
+  html_document:
+      toc: True
+      toc_depth: 3
+      toc_float: true
+      theme: cerulean
+      highlight: tango
+      df_print: kable
+      code_folding: hide
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#Task
+
+1. Perform a Scenario Design analysis as described below.  Consider whether it makes sense for your selected recommender system to perform scenario design twice, once for the organization (e.g. Amazon.com) and once for the organization's customers.
+2. Attempt to reverse engineer what you can about the site, from the site interface and any available information that you can find on the Internet or elsewhere.
+3. Include specific recommendations about how to improve the site's recommendation capabilities going forward. 
+4. Create your report using an R Markdown file, and create a discussion thread with a link to the GitHub repo where your Markdown file notebook resides.  You are not expected to need to write code for this discussion assignment.
+
+# Scenario Analysis of Readgeek
+
+Readgeek is a recommendation system for books, as well as a social network for bibliophiles.
+I just subscribed and, as an user, I was impressed by the performance of their algorithm.
+
+1) Who are the target users?
+
+The target users are book lovers who are looking for new titles.
+
+2) What are their key goals?
+
+To find new titles through custom predictions, without relying solely on the mainstream trend and the best-sellers list. Readers may also want to connect with other users to share tips and insights.
+
+3) How can the recommender system help them accomplish these goals?
+
+The system offers recommendations based on users' ratings and predictions for how much readers will like the title on a scale from 1 to 10. Additionally, it allows users to connect through a social network platform, listing "Members Who Share Your Taste".
+
+# Reverse engineering
+
+Unfortunately I could not gather much information on the specifics of the algorithm, therefore I had to "reverse engineer".
+
+The system is built on explicit ratings. As per their site section titled "How does Readgeek work?" (see Sources), the recommendations are reportedly based on a combination of item-based collaborative filtering, taking into account user preferences ("For the user based method method we look in our database to find people with a book taste very close to yours. Their ratings of books unknown to you gives us an idea how you would like those books"), as well as a content-based approach, seeking similarities between items ("In the second method we look only at each book you rated and see which books is very similar").
+I suspect this may literally be a two-step approach rather than an hybrid system, as only after providing a consistent number of ratings (more than the initial 10), "Your top recommendations" section started listing books that shared similar characteristics, such as same author.
+
+# Recommendations
+
+The algorithm beyond Readgeek appears quite secretive, therefore it is hard for an outsider to understand how to improve it. 
+As the system builds on explicit ratings, making it easier for users to log their preferences is of pivotal importance. As a new user, you are prompted for 10 initial ratings. Then the site shows a first set of recommended titles. In this initial step that preceds subscription, it is not intuitive how to rate a book that you already read and that appears among the recommendations.
+Once you subscribe to the service, the navigability improves as the dashboard clearly points to a "Rate Books" page that allows users also to update previous ratings.
+
+#Sources
+https://www.readgeek.com/about/how_it_works
+
+https://www.fastcompany.com/3039862/a-site-that-knows-your-favorite-books-before-you-do
+
